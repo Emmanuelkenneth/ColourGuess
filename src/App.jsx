@@ -18,9 +18,9 @@ function App() {
   const randomColour = Math.floor(Math.random() * options.length);
   const hexValue = options[randomColour];
   const guess = isGuessCorrect ? (
-    <h2 className="won"> You Win</h2>
+    <h2 className="won" data-testid="gameStatus"> You Win</h2>
   ) : (
-    <h2 className="lost">Try Again</h2>
+    <h2 className="lost" data-testid="gameStatus">Try Again</h2>
   );
   useEffect(
     function randomColor() {
@@ -53,11 +53,11 @@ function App() {
   return (
     <>
       <div className="container">
-        <h1>Guess the correct colour</h1>
+        <h1 data-testid="gameInstructions">Guess the correct colour</h1>
         {score === 0 ? <h2>Make a guess</h2> : guess}
 
-        <h3>Score: {score}</h3>
-        <button className="resetBtn" onClick={reset}>
+        <h3 data-testid="score">Score: {score}</h3>
+        <button className="resetBtn" data-testid="newGameButton" onClick={reset}>
           New Game
         </button>
         <div
