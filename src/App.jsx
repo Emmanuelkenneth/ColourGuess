@@ -72,7 +72,7 @@ function App() {
 
         <ul className="guesses" data-test-id="colorOptions">
           {options.map((option) => (
-            <li>
+            <li  data-test-id="colorOptions">
               <button
                 onClick={() => runCheck(option)}
                 style={{
