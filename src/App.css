@@ -1,13 +1,13 @@
 body {
   margin: 0;
   padding: 0;
-  width: 100%;
+  box-sizing: border-box;
+  max-width: 100%;
 }
 
 .container {
-  width: 100vw;
   max-width:100%;
-  box-sizing: border-box;
+  
 }
 h1,
 h2,
