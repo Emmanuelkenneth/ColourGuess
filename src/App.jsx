@@ -70,7 +70,7 @@ function App() {
           {targetColor}
         </div>
 
-        <ul className="guesses" data-test-id="colorOptions">
+        <ul className="guesses">
           {options.map((option) => (
             <li  data-test-id="colorOptions">
               <button
