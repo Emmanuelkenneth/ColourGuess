@@ -1,24 +1,33 @@
 body {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  width: 100%;
 }
-.Message {
-  background-color: black;
-  color: white;
+
+.container {
+  width: 100vw;
+  box-sizing: border-box;
 }
 h1,
 h2,
 h3 {
   text-align: center;
 }
+
 h1 {
   background-color: black;
   color: white;
-  padding: 20px;
+  padding-top: 20px;
+  margin: 0;
   text-align: center;
 }
-
+.container h1,
+.container h2 {
+  display: block;
+  margin: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
 .target-color {
   width: 400px;
   height: 300px;
@@ -77,16 +86,23 @@ li {
 
 @media (max-width: 900px) {
   .guesses {
-        display: grid;
-    gap: 10px;
+    display: grid;
+    gap: 0px;
+    width: 150px;
+    height: 150px;
     align-items: center;
     justify-items: center;
-    grid-template-columns: repeat(3, 50px);
-    grid-template-rows: repeat(2, 100px);
+    grid-template-columns: repeat(3, 120px);
+    grid-template-rows: repeat(2, 120px);
   }
+  h1 {
+    width: 100%;
+  }
+
   .target-color {
     width: 150px;
     height: 100px;
     margin: auto;
   }
 }
+
