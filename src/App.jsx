@@ -15,12 +15,18 @@ function App() {
   ]);
   const [message, setMessage] = useState("");
   const [score, setScore] = useState(0);
+  const [guessCount, setGuessCount] = useState(0);
   const randomColour = Math.floor(Math.random() * options.length);
   const hexValue = options[randomColour];
   const guess = isGuessCorrect ? (
-    <h2 className="won"> You Win</h2>
+    <h2 className="won" data-test-id="gameStatus">
+      {" "}
+      You Win
+    </h2>
   ) : (
-    <h2 className="lost">Try Again</h2>
+    <h2 className="lost" data-test-id="gameStatus">
+      Try Again
+    </h2>
   );
   useEffect(
     function randomColor() {
@@ -36,10 +42,12 @@ function App() {
       setScore(score + 1);
       setTargetColor(targetColorValue);
       setIsGuessCorrect(true);
+      setGuessCount(guessCount + 1);
     } else if (guess !== hexValue) {
       setMessage("Try Again");
       setTargetColor(targetColorValue);
       setIsGuessCorrect(false);
+      setGuessCount(guessCount + 1);
     }
   }
   function reset() {
@@ -48,16 +56,26 @@ function App() {
     setScore(0);
     setMessage("");
     setTargetColor(targetColorValue);
+    setGuessCount(0);
   }
 
   return (
     <>
       <div className="container">
-        <h1>Guess the correct colour</h1>
-        {score === 0 ? <h2>Make a guess</h2> : guess}
+        <div className="headings">
+          {" "}
+          <h1 data-testid="gameInstructions">Guess the correct colour</h1>
+          {guessCount === 0 ? <h2>Make a guess</h2> : guess}
+        </div>
 
-        <h3>Score: {score}</h3>
-        <button className="resetBtn" onClick={reset}>
+        <h3 data-test-id="score">
+          Score: {score} / {guessCount}
+        </h3>
+        <button
+          className="resetBtn"
+          data-testid="newGameButton"
+          onClick={reset}
+        >
           New Game
         </button>
         <div
@@ -74,6 +92,7 @@ function App() {
           {options.map((option) => (
             <li>
               <button
+                className="guessbuttons"
                 onClick={() => runCheck(option)}
                 style={{
                   backgroundColor: option,
@@ -90,3 +109,4 @@ function App() {
 }
 
 export default App;
+
